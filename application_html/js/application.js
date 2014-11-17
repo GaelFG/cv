@@ -1,10 +1,10 @@
 function creerCamera(scene) {
     var camera = false;
-	camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 3.01, 0), scene)
+	camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 131.01, 0), scene)
 	camera.setTarget(BABYLON.Vector3.Zero())
     camera.attachControl(canvas, false)
     camera.applyGravity = true
-	camera.ellipsoid = new BABYLON.Vector3(1, 1.5, 1);
+	camera.ellipsoid = new BABYLON.Vector3(0.5, 1, 0.5);
     camera.checkCollisions = true
 	return camera
 }

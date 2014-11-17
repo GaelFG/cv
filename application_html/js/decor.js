@@ -2,16 +2,17 @@ var decor = {
 
 	creerGridParticles: function(scene) {
 		var _gridParticles = new BABYLON.ParticleSystem("particles", 2000, scene)
-		_gridParticles.particleTexture = new BABYLON.Texture("./assets/textures/star.png", scene)
-		_gridParticles.minAngularSpeed = -2.5
-		_gridParticles.maxAngularSpeed = 2.5
-		_gridParticles.minSize = 1.0
-		_gridParticles.maxSize = 2.0
+		//_gridParticles.particleTexture = new BABYLON.Texture("./assets/textures/star.png", scene)
+		_gridParticles.particleTexture = new BABYLON.Texture("./assets/textures/tutur.jpg", scene)
+		_gridParticles.minAngularSpeed = -1.5
+		_gridParticles.maxAngularSpeed = 1.5
+		_gridParticles.minSize = 2.0
+		_gridParticles.maxSize = 4.0
 		_gridParticles.minLifeTime = 1.0
 		_gridParticles.maxLifeTime = 4.0
 		_gridParticles.minEmitPower = 1.0
 		_gridParticles.maxEmitPower = 2.0
-		_gridParticles.emitRate = 400
+		_gridParticles.emitRate = 300
 		_gridParticles.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
 		_gridParticles.minEmitBox = new BABYLON.Vector3(-250, 0, -250)
 		_gridParticles.maxEmitBox = new BABYLON.Vector3(250, 0, 250)
@@ -26,7 +27,7 @@ var decor = {
 	},
 
 	creerSolGrille: function(scene) {
-		var _sol_de_verre = BABYLON.Mesh.CreateGround("sol_de_verre", 1000, 1000, 10, scene, false);
+		var _sol_de_verre = BABYLON.Mesh.CreateGround("sol_de_verre", 200, 200, 250, 0, 25, scene, false);
 		
 		var _verre_material = new BABYLON.StandardMaterial("verre", scene);
 		
@@ -37,6 +38,22 @@ var decor = {
 		_verre_material.emissiveTexture.vScale = 64.0
 		_sol_de_verre.material = _verre_material;
 		_verre_material.alpha = 0.75;
+		return _sol_de_verre
+	},
+
+	creerSol: function(scene) {
+		var _sol_de_verre = BABYLON.Mesh.CreateGroundFromHeightMap("sol", "./assets/textures/sol_height_map.jpg", 500, 500,  10,  0,  100, scene, false);
+		
+		var _verre_material = new BABYLON.StandardMaterial("verre", scene);
+		
+		_verre_material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+		_verre_material.emissiveTexture  = new BABYLON.Texture("./assets/textures/emissivemap.png", scene);
+		//_verre_material.emissiveTexture  = new BABYLON.Texture("./assets/textures/tutur.jpg", scene);
+		_verre_material.emissiveTexture .hasAlpha = false
+		_verre_material.emissiveTexture .uScale = 64.0
+		_verre_material.emissiveTexture .vScale = 64.0
+		_sol_de_verre.material = _verre_material;
+		//_verre_material.alpha = 0.75;
 		return _sol_de_verre
 	},
 
@@ -66,7 +83,9 @@ var decor = {
 		scene.gravity = new BABYLON.Vector3(0, -10.0, 0)
 		scene.collisionsEnabled = true
 		contexte.camera = creerCamera(scene)
-		contexte.sol = decor.creerSolGrille(scene)
+		contexte.sol = decor.creerSol(scene)
+
+		/*
 		contexte.sous_sol = decor.creerSolGrille(scene)
 		contexte.sol2 = decor.creerSolGrille(scene)
 		contexte.sous_sol2 = decor.creerSolGrille(scene)
@@ -74,6 +93,8 @@ var decor = {
 		contexte.sous_sol.position.y = 10.0;
 		contexte.sol2.position.y = -10.0;
 		contexte.sous_sol2.position.y = -20.0;
+		*/
+
 		contexte.sol.checkCollisions = true
 		contexte.cielEtoile = decor.creerGridParticles(scene)
 		contexte.sphere = creerSphereTemp(scene)
