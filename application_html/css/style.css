@@ -1,0 +1,24 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+#caneva {
+  width: 100%;
+  height: 100%;
+}
+
+#hero-status-pannel {
+width: 170px;
+border: solid 1px #00FFFF;
+background-color: #000000;
+position: absolute;
+margin: 50px 50px 50px 50px;
+float: left;
+color: #00FFFF;
+padding: 9px;
+padding-left: 19px;
+}
