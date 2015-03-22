@@ -1,6 +1,6 @@
 function creerCamera(scene) {
     var camera = false;
-	camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 131.01, 0), scene)
+	camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 13.01, 0), scene)
 	camera.setTarget(BABYLON.Vector3.Zero())
     camera.attachControl(canvas, false)
     camera.applyGravity = true
@@ -27,6 +27,7 @@ function creerSphereTemp(scene) {
 }
 
 
+BABYLON.Engine.ShadersRepository = "./assets/shaders/";
 
 // Get the canvas element from our HTML below
 var canvas = document.getElementById("caneva");
